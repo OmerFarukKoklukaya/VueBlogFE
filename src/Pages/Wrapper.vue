@@ -39,8 +39,8 @@ export default {
 	<body class="sb-nav-fixed">
 		<Nav v-if="isStoreUpped" />
 
-		<div id="layoutSidenav">
-			<Menu v-if="isStoreUpped && loggedUser.isHaveEditPermission" />
+		<div v-if="isStoreUpped && loggedUser.isHaveEditPermission" id="layoutSidenav">
+			<Menu  />
 
 			<div id="layoutSidenav_content">
 				<div class="container">
@@ -52,5 +52,13 @@ export default {
 				</div>
 			</div>
 		</div>
+
+    <div v-else class="container">
+      <div class="row">
+        <main class="col-lg-12">
+          <router-view v-if="isStoreUpped" />
+        </main>
+      </div>
+    </div>
 	</body>
 </template>
