@@ -11,11 +11,18 @@ export default {
 		const loggedUser = useUserStore().user
 		const isHaveWritePermission = ref(false)
 
-		onMounted(async ()=>{
-			toggleSidebar()
-		})
+    onMounted(()=>{
+      if(!loggedUser.isHaveEditPermission || !loggedUser){
+        document.body.classList.toggle('sb-sidenav-toggled');
+      }
+      if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+        document.body.classList.toggle('sb-sidenav-toggled');
+      }
+    })
+
 
 		const toggleSidebar = () =>{
+
 			document.body.classList.toggle('sb-sidenav-toggled');
 			localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
 		}

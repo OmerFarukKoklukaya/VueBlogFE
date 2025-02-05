@@ -35,9 +35,7 @@ export default {
 
 		onMounted(() => {
 			document.addEventListener('click', handleClickOutside);
-			console.log('prop comment: ', props.comment)
 			comment.value = props.comment
-			console.log('norm comment: ', comment.value)
 		})
 
 		watch(props, () => {
@@ -58,10 +56,12 @@ export default {
 						withCredentials: true,
 					},
 				)
-
+        if (!comment.value.child_comments) {
+          comment.value.child_comments = []
+        }
 				comment.value.child_comments.unshift(data.data)
-
-				newComment.value = ''
+        newComment.value = ''
+        openCommentSection.value = false
 			} catch (e) {
 				console.log(e)
 			}

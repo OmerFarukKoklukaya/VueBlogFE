@@ -59,10 +59,11 @@ export default {
 </script>
 
 <template>
+
 	<div>
 	<div v-for="blog in blogs">
 		<!-- Blog post-->
-		<div class="card mb-4">
+		<div class="card mb-3">
 			<div v-if="blog.image">
 				<img
 					v-if="blog.image[0] === '/'"

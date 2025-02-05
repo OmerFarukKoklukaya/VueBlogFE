@@ -55,6 +55,7 @@ export default {
 				)
 
 				comments.value.unshift(data.data)
+        if(comments.value.length > 5){}
 				comments.value.pop()
 
 				newComment.value = ("")

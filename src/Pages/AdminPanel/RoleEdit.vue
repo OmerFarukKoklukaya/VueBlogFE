@@ -22,7 +22,8 @@ export default {
 
 			if (!route.params.id) {
 				newRole.value = true
-			} else if (parseInt(route.params.id.toString()) > 0) {
+			}
+      else if (parseInt(route.params.id.toString()) > 0) {
 				const { data } = await axios.get('/roles/' + route.params.id)
 				role.id = data.data.id
 				role.name = data.data.name
@@ -31,7 +32,8 @@ export default {
 				})
 
 				console.log(role)
-			} else {
+			}
+      else {
 				router.push('/admin/roles')
 			}
 		})

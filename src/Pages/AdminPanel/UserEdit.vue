@@ -20,7 +20,7 @@ export default {
 		const paging = ref()
 		const newUser = ref(false)
 		const route = useRoute()
-		const roles = ref([])
+		const roles = ref()
 		const error = ref('')
 
 		onMounted(async () => {
@@ -45,6 +45,7 @@ export default {
 				router.push('/admin/users')
 			}
 		})
+
 
 		const getBlogs = async (page: 1) => {
 			const { data } = await axios.get(`/users/${user.id}/blogs?page=${page}`)
@@ -166,7 +167,7 @@ export default {
 							<thead>
 							</thead>
 							<tbody ref="table">
-								<tr v-for="permission in roles[user.roleID - 1].Permissions">
+								<tr v-for="permission in roles[(roles.findIndex((e) => e.id === user.roleID))].Permissions" :id="permission.id">
 									<td>{{ permission.name }}</td>
 								</tr>
 							</tbody>
